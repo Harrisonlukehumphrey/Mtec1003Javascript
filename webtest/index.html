@@ -1,12 +1,38 @@
 <html>
 <head>
-<title>Test</title>
-  </head>
+  <title>Test</title>
+</head>
 <body>
-<p id="words">0</p>
+  <canvas id="myCanvas" width="600" height="600"></canvas>
 
-<script>
-  console.log("testing");
+  <script>
+
+   var c = document.getElementById("myCanvas");
+   var ctx = c.getContext("2d");
+
+   function drawRect(x) {
+    ctx.beginPath();
+    ctx.lineWidth = "20";
+    ctx.strokeStyle = "blue";
+    ctx.rect(x, 5, 100, 100);
+    ctx.stroke();
+   }
+   drawRect(5);
+
+   var x = 5;
+
+   function moveRect(){
+     ctx.clearRect(0, 0, 600, 600);
+     drawRect(x += 1);
+
+     if (x < 400){
+       requestAnimationFrame(moveRect);
+    }
+
+
+}
+    moveRect();
+/*  console.log("testing");
   var string = "";
   for (var i = 0; i < 10; i ++ ) {
   //console.log(i);
@@ -22,7 +48,8 @@
       p.innerHTML = (insideP += 1);
     }
   //document.getElementById("words").innerHTML = string;
-} );
+} ); */
+
   </script>
   </body>
 
